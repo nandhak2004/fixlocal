@@ -1,0 +1,190 @@
+.members-page {
+    padding: 60px 10%;
+    background-color: #f8fbff;
+    min-height: 100vh;
+}
+
+.members-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.members-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.member-card {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    transition: 0.3s;
+    border: 1px solid #eee;
+}
+
+.member-card:hover {
+    transform: translateY(-10px);
+}
+
+.member-img {
+    position: relative;
+    height: 200px;
+}
+
+.member-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.rating-tag {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background: white;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    color: #1a2b3c;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.member-info {
+    padding: 20px;
+}
+
+.role {
+    color: #28a745;
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin: 5px 0 15px;
+}
+
+.skills-chips {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.skill-chip {
+    background: #f0f2f5;
+    padding: 4px 12px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    color: #555;
+}
+
+.member-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.view-profile, .book-now {
+    flex: 1;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.view-profile {
+    background: #eef2f7;
+    color: #0b2545;
+}
+
+.book-now {
+    background: #0b2545;
+    color: white;
+}
+
+.view-profile:hover,.book-now:hover {
+     background: #007bff;
+     color: white;
+     }
+/* ==========================
+   MOBILE RESPONSIVE
+========================== */
+
+@media (max-width: 768px) {
+
+    .members-page {
+        padding: 30px 15px;
+    }
+
+    .members-header {
+        margin-bottom: 25px;
+    }
+
+    .members-header h2 {
+        font-size: 1.5rem;
+        line-height: 1.3;
+    }
+
+    .members-header p {
+        font-size: 14px;
+        margin-top: 10px;
+    }
+
+    .members-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .member-card {
+        border-radius: 16px;
+    }
+
+    .member-img {
+        height: 190px;
+    }
+
+    .member-info {
+        padding: 16px;
+    }
+
+    .member-info h3 {
+        font-size: 1.1rem;
+    }
+
+    .role {
+        font-size: 13px;
+        line-height: 1.4;
+    }
+
+    .skills-chips {
+        gap: 6px;
+        margin-bottom: 15px;
+    }
+
+    .skill-chip {
+        font-size: 12px;
+        padding: 4px 10px;
+    }
+
+    .member-actions {
+        gap: 8px;
+    }
+
+    .view-profile,
+    .book-now {
+        padding: 12px;
+        font-size: 14px;
+    }
+
+    .rating-tag {
+        font-size: 12px;
+        padding: 4px 10px;
+    }
+    .members-page{
+    padding-bottom: 100px;
+}
+.members-grid{
+    margin-bottom:10px;
+}
+}

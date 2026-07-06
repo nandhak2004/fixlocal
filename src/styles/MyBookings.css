@@ -1,0 +1,242 @@
+ .bookings-page {
+     padding: 60px 10%;
+     background-color: #f0f2f5;
+     min-height: 100vh;
+     z-index: 1;
+
+ }
+
+ .page-title {
+     text-align: center;
+     margin-bottom: 40px;
+     color: #1a2b3c;
+ }
+
+ .bookings-list {
+     display: flex;
+     flex-direction: column;
+     gap: 25px;
+ }
+
+ .booking-ticket {
+     background: white;
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+     padding: 30px;
+     border-radius: 15px;
+     position: relative;
+     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+     border-left: 8px solid #0b2545;
+     /* z-index: 100; */
+ }
+
+ .ticket-cut-top,
+ .ticket-cut-bottom {
+     position: absolute;
+     width: 30px;
+     height: 30px;
+     background: #f0f2f5;
+     border-radius: 50%;
+     left: 25%;
+
+ }
+
+ .ticket-cut-top {
+     top: -15px;
+ }
+
+ .ticket-cut-bottom {
+     bottom: -15px;
+ }
+
+ .ticket-left {
+     display: flex;
+     align-items: center;
+     gap: 20px;
+     /* flex: 1.5; */
+ }
+
+ .provider-thumb {
+     width: 70px;
+     height: 70px;
+     border-radius: 12px;
+     object-fit: cover;
+ }
+
+ .ticket-id {
+     font-size: 12px;
+     color: #888;
+     font-weight: bold;
+ }
+
+ .service-type {
+     color: #28a745;
+     font-weight: 600;
+     font-size: 0.9rem;
+     margin: 5px 0 15px;
+ }
+
+ .ticket-middle {
+     position: relative;
+     padding-left: 30px;
+ }
+
+ .icon {
+     position: absolute;
+     top: 4px;
+     left: 10px;
+
+ }
+
+ .icon {
+     font-size: 18px;
+     color: #888;
+
+     font-weight: bold;
+ }
+
+ .info-row span {
+     font-size: 13px;
+     color: #0591ee;
+     color: #888;
+
+     font-weight: bold;
+ }
+
+ .status-badge {
+     display: inline-flex;
+     align-items: center;
+     gap: 5px;
+     padding: 5px 15px;
+     border-radius: 50px;
+     font-weight: bold;
+     font-size: 13px;
+     margin-top: 10px;
+ }
+
+ .status-badge.confirmed {
+     background: #e7f9ed;
+     color: #28a745;
+ }
+
+ .status-badge.pending {
+     background: #fff4e5;
+     color: #ff9800;
+ }
+
+ .status-badge.complete {
+     background: #e7f9ed;
+     color: #28a745;
+ }
+
+
+ .ticket-right {
+     display: flex;
+     gap: 10px;
+ }
+
+ .ticket-right {
+     padding: 10px 15px;
+     border: none;
+     border-radius: 8px;
+     cursor: pointer;
+     font-weight: bold;
+     display: flex;
+     align-items: center;
+     gap: 5px;
+ }
+
+ .secure-chat-btn {
+     background: #25d366;
+     color: white;
+     padding: 10px 15px;
+     border: none;
+     border-radius: 8px;
+     cursor: pointer;
+     font-weight: bold;
+     margin-top: 5px;
+ }
+
+ .view-status-btn {
+     background: #0b2545;
+     color: white;
+     padding: 10px 15px;
+     border: none;
+     border-radius: 8px;
+     cursor: pointer;
+     font-weight: bold;
+     margin-top: 5px;
+ }
+
+ .cancel-booking-btn {
+     background: #ff4d4d;
+     color: white;
+     padding: 10px 15px;
+     border: none;
+     border-radius: 8px;
+     cursor: pointer;
+     font-weight: bold;
+     margin-top: 5px;
+ }
+
+ @media (max-width:768px) {
+
+     .bookings-page {
+         padding: 20px 12px 90px;
+     }
+
+     .booking-ticket {
+         flex-direction: column;
+         align-items: flex-start;
+         gap: 15px;
+         padding: 18px;
+         border-radius: 20px;
+
+         box-shadow:
+             0 10px 30px rgba(0, 0, 0, 0.08);
+
+     }
+
+     /* .status-badge{
+  padding:8px 16px;
+  font-size:14px;
+} */
+
+     /* .page-title {
+         font-size: 28px;
+         font-weight: 700;
+     } */
+
+     .ticket-middle {
+         padding-left: 0;
+     }
+
+     .icon {
+         display: none;
+     }
+
+     .ticket-right {
+         display: flex;
+         flex-direction: row;
+         gap: 10px;
+         width: 100%;
+     }
+
+     .view-status-btn,
+     .cancel-booking-btn {
+         flex: 1;
+         width: auto;
+         margin-top: 0;
+     }
+
+ .ticket-cut-top,
+ .ticket-cut-bottom {
+     display: none;
+ }
+
+ .provider-thumb {
+     width: 80px;
+     height: 80px;
+ }
+ }
