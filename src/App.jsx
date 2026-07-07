@@ -1,4 +1,4 @@
-import {BrowserRouter,Route,Routes} from "react-router-dom"
+import {HashRouter,Route,Routes} from "react-router-dom"
 import Home from './pages/Home'
 import Services from './pages/Services'
 import Login from './pages/Login'
@@ -22,7 +22,7 @@ import ServiceManagement from "./pages/ServiceManagement"
 function App() {
   return (
     <>
-   <BrowserRouter>
+   <HashRouter>
    <Navbar/> 
    <MobileHeader/>
    <Routes>
@@ -44,7 +44,7 @@ function App() {
     <Route path="/service-management" element={<ServiceManagement/>} />
    </Routes>
    <MobileNavbar/>
-   </BrowserRouter>
+   </HashRouter>
     </>
   )
 }
