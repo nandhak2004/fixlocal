@@ -3,7 +3,9 @@ import {
   FaPlus,
   FaEdit,
   FaTrash,
-  FaSearch
+  FaSearch,
+  FaCheckCircle,
+  FaTimesCircle
 } from "react-icons/fa";
 
 import "../styles/ServiceManagement.css";
@@ -13,68 +15,81 @@ function ServiceManagement() {
   const [services, setServices] = useState([
     {
       id: 1,
-      name: "Plumbing",
-      description: "Water Pipe & Tap Repair",
+      category: "Plumbing",
+      icon: "🚰",
       status: "Active"
     },
     {
       id: 2,
-      name: "Electrician",
-      description: "Electrical Installation & Repair",
+      category: "Electrician",
+      icon: "⚡",
       status: "Active"
     },
     {
       id: 3,
-      name: "Painting",
-      description: "House & Office Painting",
+      category: "Cleaning",
+      icon: "🧹",
+      status: "Active"
+    },
+    {
+      id: 4,
+      category: "AC Repair",
+      icon: "❄️",
+      status: "Active"
+    },
+    {
+      id: 5,
+      category: "Painting",
+      icon: "🎨",
+      status: "Active"
+    },
+    {
+      id: 6,
+      category: "Carpentry",
+      icon: "🪚",
       status: "Active"
     }
   ]);
 
   const [search, setSearch] = useState("");
 
-  const [showAddPopup, setShowAddPopup] =
-    useState(false);
+  const [showAddPopup, setShowAddPopup] = useState(false);
 
-  const [showEditPopup, setShowEditPopup] =
-    useState(false);
+  const [showEditPopup, setShowEditPopup] = useState(false);
 
-  const [showDeletePopup, setShowDeletePopup] =
-    useState(false);
+  const [showDeletePopup, setShowDeletePopup] = useState(false);
 
-  const [selectedService, setSelectedService] =
-    useState(null);
+  const [selectedService, setSelectedService] = useState(null);
 
-  const [serviceName, setServiceName] =
-    useState("");
+  const [serviceCategory, setServiceCategory] = useState("");
 
-  const [serviceDescription,
-    setServiceDescription] =
-    useState("");
+  const [serviceIcon, setServiceIcon] = useState("");
+
+  const filteredServices = services.filter((item) =>
+    item.category.toLowerCase().includes(search.toLowerCase())
+  );
 
   function handleAddService() {
 
-    if (
-      !serviceName.trim() ||
-      !serviceDescription.trim()
-    ) {
-      return;
-    }
+    if (!serviceCategory.trim() || !serviceIcon.trim()) return;
 
     const newService = {
+
       id: Date.now(),
-      name: serviceName,
-      description: serviceDescription,
+
+      category: serviceCategory,
+
+      icon: serviceIcon,
+
       status: "Active"
+
     };
 
-    setServices([
-      newService,
-      ...services
-    ]);
+    setServices([newService, ...services]);
 
-    setServiceName("");
-    setServiceDescription("");
+    setServiceCategory("");
+
+    setServiceIcon("");
 
     setShowAddPopup(false);
 
@@ -84,11 +99,9 @@ function ServiceManagement() {
 
     setSelectedService(service);
 
-    setServiceName(service.name);
+    setServiceCategory(service.category);
 
-    setServiceDescription(
-      service.description
-    );
+    setServiceIcon(service.icon);
 
     setShowEditPopup(true);
 
@@ -97,17 +110,19 @@ function ServiceManagement() {
   function handleUpdateService() {
 
     setServices(
+
       services.map((item) => {
 
-        if (
-          item.id === selectedService.id
-        ) {
+        if (item.id === selectedService.id) {
 
           return {
+
             ...item,
-            name: serviceName,
-            description:
-              serviceDescription
+
+            category: serviceCategory,
+
+            icon: serviceIcon
+
           };
 
         }
@@ -115,6 +130,7 @@ function ServiceManagement() {
         return item;
 
       })
+
     );
 
     setShowEditPopup(false);
@@ -132,81 +148,114 @@ function ServiceManagement() {
   function handleDeleteService() {
 
     setServices(
+
       services.filter(
-        (item) =>
-          item.id !== selectedService.id
+
+        (item) => item.id !== selectedService.id
+
       )
+
     );
 
     setShowDeletePopup(false);
 
   }
 
-  const filteredServices =
-    services.filter((item) =>
-      item.name
-        .toLowerCase()
-        .includes(
-          search.toLowerCase()
-        )
+  function handleStatus(id) {
+
+    setServices(
+
+      services.map((item) => {
+
+        if (item.id === id) {
+
+          return {
+
+            ...item,
+
+            status:
+
+              item.status === "Active"
+
+                ? "Inactive"
+
+                : "Active"
+
+          };
+
+        }
+
+        return item;
+
+      })
+
     );
+
+  }
 
   return (
 
-    <div className="service-management">
+    <div className="sm-management">
 
-      {/* TOP */}
-
-      <div className="services-header">
+      <div className="sm-header">
 
         <div>
-          <h1>
-            Service Management
-          </h1>
+
+          <h1>Service Management</h1>
 
           <p>
-            Manage all platform services
+
+            Add, Edit and Manage Platform Services
+
           </p>
+
         </div>
 
         <button
-          className="add-service-btn"
-          onClick={() =>
-            setShowAddPopup(true)
-          }
+
+          className="sm-add-btn"
+
+          onClick={() => setShowAddPopup(true)}
+
         >
+
           <FaPlus />
+
           Add Service
+
         </button>
 
       </div>
 
-      {/* SEARCH */}
-
-      <div className="search-box">
+      <div className="sm-search-box">
 
         <FaSearch />
 
         <input
+
           type="text"
+
           placeholder="Search Service..."
+
           value={search}
+
           onChange={(e) =>
+
             setSearch(e.target.value)
+
           }
+
         />
 
       </div>
 
-      {/* TABLE */}
+      <div className="sm-table">
 
-      <div className="service-table">
+        <div className="sm-table-head">
 
-        <div className="table-head">
+          <span>Icon</span>
 
-          <span>Service</span>
-
-          <span>Description</span>
+          <span>Service Name</span>
 
           <span>Status</span>
 
@@ -214,230 +263,251 @@ function ServiceManagement() {
 
         </div>
 
-        {
-          filteredServices.map(
-            (service) => (
+        {filteredServices.map((service) => (
 
-              <div
-                className="table-row"
-                key={service.id}
+          <div
+
+            className="sm-table-row"
+
+            key={service.id}
+
+          >
+
+            <span className="sm-service-icon">
+
+              {service.icon}
+
+            </span>
+
+            <span>
+
+              {service.category}
+
+            </span>
+
+            <span>
+
+              <button
+
+                className={
+
+                  service.status === "Active"
+
+                    ? "sm-status-active"
+
+                    : "sm-status-inactive"
+
+                }
+
+                onClick={() =>
+
+                  handleStatus(service.id)
+
+                }
+
               >
 
-                <span>
-                  {service.name}
-                </span>
+                {service.status === "Active"
 
-                <span>
-                  {service.description}
-                </span>
+                  ? <FaCheckCircle />
 
-                <span className="active-status">
-                  {service.status}
-                </span>
+                  : <FaTimesCircle />}
 
-                <div className="action-buttons">
+                {service.status}
 
-                  <button
-                    className="edit-btn"
-                    onClick={() =>
-                      handleEditOpen(
-                        service
-                      )
-                    }
-                  >
-                    <FaEdit />
-                  </button>
+              </button>
 
-                  <button
-                    className="delete-btn"
-                    onClick={() =>
-                      handleDeleteOpen(
-                        service
-                      )
-                    }
-                  >
-                    <FaTrash />
-                  </button>
+            </span>
 
-                </div>
+            <div className="sm-actions">
 
-              </div>
+              <button
 
-            ))
-        }
+                className="sm-edit-btn"
 
-      </div>
+                onClick={() =>
 
-      {/* ADD POPUP */}
+                  handleEditOpen(service)
 
-      {
-        showAddPopup && (
-
-          <div className="popup-overlay">
-
-            <div className="popup-box">
-
-              <h2>
-                Add Service
-              </h2>
-
-              <input
-                type="text"
-                placeholder="Service Name"
-                value={serviceName}
-                onChange={(e) =>
-                  setServiceName(
-                    e.target.value
-                  )
                 }
-              />
 
-              <textarea
-                rows="4"
-                placeholder="Description"
-                value={serviceDescription}
-                onChange={(e) =>
-                  setServiceDescription(
-                    e.target.value
-                  )
+              >
+
+                <FaEdit />
+
+              </button>
+
+              <button
+
+                className="sm-delete-btn"
+
+                onClick={() =>
+
+                  handleDeleteOpen(service)
+
                 }
-              />
 
-              <div className="popup-buttons">
+              >
 
-                <button
-                  onClick={
-                    handleAddService
-                  }
-                >
-                  Save
-                </button>
+                <FaTrash />
 
-                <button
-                  className="cancell-btn"
-                  onClick={() =>
-                    setShowAddPopup(false)
-                  }
-                >
-                  Cancel
-                </button>
-
-              </div>
+              </button>
 
             </div>
 
           </div>
 
-        )
-      }
+        ))}
+      </div>
+            {/* ADD SERVICE POPUP */}
+
+      {showAddPopup && (
+
+        <div className="sm-popup-overlay">
+
+          <div className="sm-popup-box">
+
+            <h2>Add New Service</h2>
+
+            <input
+              type="text"
+              placeholder="Service Name (Example: Plumbing)"
+              value={serviceCategory}
+              onChange={(e) =>
+                setServiceCategory(e.target.value)
+              }
+            />
+
+            <input
+              type="text"
+              placeholder="Service Icon (Example: 🚰)"
+              value={serviceIcon}
+              onChange={(e) =>
+                setServiceIcon(e.target.value)
+              }
+            />
+
+            <div className="sm-popup-buttons">
+
+              <button
+                className="sm-save-btn"
+                onClick={handleAddService}
+              >
+                Save
+              </button>
+
+              <button
+                className="sm-cancel-btn"
+                onClick={() =>
+                  setShowAddPopup(false)
+                }
+              >
+                Cancel
+              </button>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      )}
 
       {/* EDIT POPUP */}
 
-      {
-        showEditPopup && (
+      {showEditPopup && (
 
-          <div className="popup-overlay">
+        <div className="sm-popup-overlay">
 
-            <div className="popup-box">
+          <div className="sm-popup-box">
 
-              <h2>
-                Edit Service
-              </h2>
+            <h2>Edit Service</h2>
 
-              <input
-                type="text"
-                value={serviceName}
-                onChange={(e) =>
-                  setServiceName(
-                    e.target.value
-                  )
+            <input
+              type="text"
+              value={serviceCategory}
+              onChange={(e) =>
+                setServiceCategory(e.target.value)
+              }
+            />
+
+            <input
+              type="text"
+              value={serviceIcon}
+              onChange={(e) =>
+                setServiceIcon(e.target.value)
+              }
+            />
+
+            <div className="sm-popup-buttons">
+
+              <button
+                className="sm-save-btn"
+                onClick={handleUpdateService}
+              >
+                Update
+              </button>
+
+              <button
+                className="sm-cancel-btn"
+                onClick={() =>
+                  setShowEditPopup(false)
                 }
-              />
-
-              <textarea
-                rows="4"
-                value={serviceDescription}
-                onChange={(e) =>
-                  setServiceDescription(
-                    e.target.value
-                  )
-                }
-              />
-
-              <div className="popup-buttons">
-
-                <button
-                  onClick={
-                    handleUpdateService
-                  }
-                >
-                  Update
-                </button>
-
-                <button
-                  className="cancel-btn"
-                  onClick={() =>
-                    setShowEditPopup(false)
-                  }
-                >
-                  Cancel
-                </button>
-
-              </div>
+              >
+                Cancel
+              </button>
 
             </div>
 
           </div>
 
-        )
-      }
+        </div>
+
+      )}
 
       {/* DELETE POPUP */}
 
-      {
-        showDeletePopup && (
+      {showDeletePopup && (
 
-          <div className="popup-overlay">
+        <div className="sm-popup-overlay">
 
-            <div className="popup-box delete-popup">
+          <div className="sm-popup-box sm-delete-popup">
 
-              <h2>
-                Delete Service
-              </h2>
+            <h2>Delete Service</h2>
 
-              <p>
-                Are you sure you want
-                to delete this service?
-              </p>
+            <p>
 
-              <div className="popup-buttons">
+              Are you sure you want to delete
 
-                <button
-                  className="delete-confirm-btn"
-                  onClick={
-                    handleDeleteService
-                  }
-                >
-                  Delete
-                </button>
+              <b> {selectedService?.category}</b> ?
 
-                <button
-                  className="cancel-btn"
-                  onClick={() =>
-                    setShowDeletePopup(false)
-                  }
-                >
-                  Cancel
-                </button>
+            </p>
 
-              </div>
+            <div className="sm-popup-buttons">
+
+              <button
+                className="sm-delete-confirm-btn"
+                onClick={handleDeleteService}
+              >
+                Delete
+              </button>
+
+              <button
+                className="sm-cancel-btn"
+                onClick={() =>
+                  setShowDeletePopup(false)
+                }
+              >
+                Cancel
+              </button>
 
             </div>
 
           </div>
 
-        )
-      }
+        </div>
+
+      )}
 
     </div>
 

@@ -1,0 +1,656 @@
+/* ===========================
+   PROVIDER MANAGEMENT
+=========================== */
+
+.pm-management{
+    padding:35px;
+    min-height:100vh;
+    background:#f5f7fb;
+}
+
+/* ===========================
+   HEADER
+=========================== */
+
+.pm-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:30px;
+}
+
+.pm-header h1{
+    font-size:32px;
+    font-weight:700;
+    color:#1e293b;
+}
+
+.pm-header p{
+    margin-top:8px;
+    color:#64748b;
+    font-size:15px;
+}
+
+/* ===========================
+   SEARCH
+=========================== */
+
+.pm-search-box{
+
+    display:flex;
+    align-items:center;
+    gap:12px;
+
+    background:#fff;
+
+    padding:15px 20px;
+
+    border-radius:14px;
+
+    margin-bottom:25px;
+
+    box-shadow:
+    0 10px 25px rgba(0,0,0,.06);
+
+}
+
+.pm-search-box svg{
+
+    color:#64748b;
+
+    font-size:18px;
+
+}
+
+.pm-search-box input{
+
+    width:100%;
+
+    border:none;
+
+    outline:none;
+
+    background:none;
+
+    font-size:15px;
+
+}
+
+/* ===========================
+   TABLE
+=========================== */
+
+.pm-table{
+
+    background:#fff;
+
+    border-radius:18px;
+
+    overflow:hidden;
+
+    box-shadow:
+    0 10px 30px rgba(0,0,0,.07);
+
+}
+
+.pm-table-head{
+
+    display:grid;
+
+    grid-template-columns:
+    2.2fr
+    1.2fr
+    1fr
+    1.4fr;
+
+    padding:18px 24px;
+
+    background:#2563eb;
+
+    color:white;
+
+    font-weight:600;
+
+}
+
+.pm-table-row{
+
+    display:grid;
+
+    grid-template-columns:
+    2.2fr
+    1.2fr
+    1fr
+    1.4fr;
+
+    align-items:center;
+
+    padding:20px 24px;
+
+    border-bottom:1px solid #edf2f7;
+
+    transition:.25s;
+
+}
+
+.pm-table-row:hover{
+
+    background:#f8fbff;
+
+}
+
+/* ===========================
+   PROVIDER INFO
+=========================== */
+
+.pm-provider-info{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+}
+
+.pm-provider-photo{
+
+    width:55px;
+
+    height:55px;
+
+    border-radius:50%;
+
+    object-fit:cover;
+
+    border:3px solid #dbeafe;
+
+}
+
+.pm-provider-info h4{
+
+    color:#1e293b;
+
+    margin-bottom:5px;
+
+    font-size:17px;
+
+}
+
+.pm-provider-info p{
+
+    color:#64748b;
+
+    font-size:14px;
+
+}
+
+/* ===========================
+   STATUS
+=========================== */
+
+.pm-table-row span{
+
+    color:#334155;
+
+    font-size:15px;
+
+}
+
+/* ===========================
+   ACTION BUTTONS
+=========================== */
+
+.pm-actions{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+}
+
+.pm-actions button{
+
+    width:42px;
+
+    height:42px;
+
+    border:none;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:16px;
+
+}
+
+/* VIEW */
+
+.pm-view-btn{
+
+    background:#eff6ff;
+
+    color:#2563eb;
+
+}
+
+.pm-view-btn:hover{
+
+    background:#2563eb;
+
+    color:white;
+
+}
+
+/* APPROVE */
+
+.pm-approve-btn{
+
+    background:#dcfce7;
+
+    color:#15803d;
+
+}
+
+.pm-approve-btn:hover{
+
+    background:#16a34a;
+
+    color:white;
+
+}
+
+/* REJECT */
+
+.pm-reject-btn{
+
+    background:#fee2e2;
+
+    color:#dc2626;
+
+}
+
+.pm-reject-btn:hover{
+
+    background:#dc2626;
+
+    color:white;
+
+}
+
+/* BAN */
+
+.pm-ban-btn{
+
+    background:#fef2f2;
+
+    color:#b91c1c;
+
+}
+
+.pm-ban-btn:hover{
+
+    background:#b91c1c;
+
+    color:white;
+
+}
+
+/* UNBAN */
+
+.pm-unban-btn{
+
+    background:#fefce8;
+
+    color:#ca8a04;
+
+}
+
+.pm-unban-btn:hover{
+
+    background:#ca8a04;
+
+    color:white;
+
+}
+/* ===========================
+   PROFILE POPUP
+=========================== */
+
+
+ .pm-popup-overlay{
+
+    position:fixed;
+    inset:0;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    padding:20px;
+
+    overflow-y:auto;
+
+    background:rgba(15,23,42,.55);
+
+    z-index:99999;
+
+}
+
+@keyframes pmFade{
+
+    from{
+        opacity:0;
+    }
+
+    to{
+        opacity:1;
+    }
+
+}
+
+
+ .pm-popup-box{
+
+    width:650px;
+    max-width:95%;
+
+    background:#fff;
+
+    border-radius:22px;
+
+    padding:30px;
+
+    max-height:90vh;
+
+    overflow-y:auto;
+
+    box-shadow:0 30px 60px rgba(0,0,0,.18);
+
+}
+
+@keyframes pmScale{
+
+    from{
+        transform:scale(.92);
+        opacity:0;
+    }
+
+    to{
+        transform:scale(1);
+        opacity:1;
+    }
+
+}
+
+/* ===========================
+   TOP
+=========================== */
+
+.pm-popup-top{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:22px;
+
+    margin-bottom:30px;
+
+}
+
+.pm-popup-photo{
+
+    width:100px;
+
+    height:100px;
+
+    border-radius:50%;
+
+    object-fit:cover;
+
+    border:5px solid #dbeafe;
+
+}
+
+.pm-popup-top h2{
+
+    color:#1e293b;
+
+    margin-bottom:6px;
+
+}
+
+.pm-popup-top p{
+
+    color:#64748b;
+
+}
+
+/* ===========================
+   DETAILS
+=========================== */
+
+.pm-popup-details p{
+
+    margin-bottom:16px;
+
+    color:#334155;
+
+    line-height:1.7;
+
+}
+
+.pm-popup-details strong{
+
+    color:#0f172a;
+
+}
+
+/* ===========================
+   SKILLS
+=========================== */
+
+.pm-skills{
+
+    margin-top:25px;
+
+}
+
+.pm-skill-list{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:12px;
+
+    margin-top:15px;
+
+}
+
+.pm-skill-chip{
+
+    background:#2563eb;
+
+    color:white;
+
+    padding:9px 18px;
+
+    border-radius:50px;
+
+    font-size:14px;
+
+}
+
+/* ===========================
+   AADHAAR
+=========================== */
+
+.pm-aadhar-box{
+
+    margin-top:30px;
+
+}
+
+.pm-aadhar-image{
+
+    width:100%;
+
+    max-width:400px;
+
+    margin-top:15px;
+
+    border-radius:14px;
+
+    border:1px solid #e2e8f0;
+
+    object-fit:cover;
+
+    box-shadow:
+    0 10px 25px rgba(0,0,0,.08);
+
+}
+
+/* ===========================
+   CLOSE BUTTON
+=========================== */
+
+.pm-close-btn{
+
+    width:100%;
+
+    margin-top:30px;
+
+    padding:15px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:#2563eb;
+
+    color:white;
+
+    font-size:16px;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+}
+
+.pm-close-btn:hover{
+
+    background:#1d4ed8;
+
+}
+
+/* ===========================
+   RESPONSIVE
+=========================== */
+
+@media(max-width:900px){
+
+    .pm-management{
+
+        padding:20px;
+
+    }
+
+    .pm-table{
+
+        overflow-x:auto;
+
+    }
+
+    .pm-table-head,
+    .pm-table-row{
+
+        min-width:760px;
+
+    }
+
+}
+
+@media(max-width:650px){
+
+    .pm-popup-box{
+
+        width:95%;
+
+        padding:22px;
+
+    }
+
+    .pm-popup-top{
+
+        flex-direction:column;
+
+        text-align:center;
+
+    }
+
+    .pm-popup-photo{
+
+        width:90px;
+        height:90px;
+
+    }
+
+    .pm-skill-list{
+
+        justify-content:center;
+
+    }
+
+}
+@media (max-width:768px){
+
+.pm-popup-box{
+
+    width:100%;
+
+    padding:20px;
+
+}
+
+.pm-popup-top{
+
+    flex-direction:column;
+
+    text-align:center;
+
+}
+
+.pm-popup-photo{
+
+    width:80px;
+    height:80px;
+
+}
+
+.pm-skill-list{
+
+    justify-content:center;
+
+}
+
+.pm-close-btn{
+
+    width:100%;
+
+}
+
+}

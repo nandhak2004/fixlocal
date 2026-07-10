@@ -1,0 +1,511 @@
+/* ===========================
+   CUSTOMER MANAGEMENT
+=========================== */
+
+.cm-management{
+    padding:35px;
+    min-height:100vh;
+    background:#f5f7fb;
+}
+
+/* ===========================
+   HEADER
+=========================== */
+
+.cm-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:30px;
+}
+
+.cm-header h1{
+    font-size:32px;
+    font-weight:700;
+    color:#1e293b;
+}
+
+.cm-header p{
+    margin-top:8px;
+    color:#64748b;
+    font-size:15px;
+}
+
+/* ===========================
+   SEARCH
+=========================== */
+
+.cm-search-box{
+
+    display:flex;
+    align-items:center;
+    gap:12px;
+
+    background:#fff;
+
+    padding:15px 20px;
+
+    border-radius:14px;
+
+    margin-bottom:25px;
+
+    box-shadow:
+    0 10px 25px rgba(0,0,0,.06);
+
+}
+
+.cm-search-box svg{
+
+    color:#64748b;
+
+    font-size:18px;
+
+}
+
+.cm-search-box input{
+
+    width:100%;
+
+    border:none;
+
+    outline:none;
+
+    background:none;
+
+    font-size:15px;
+
+}
+
+/* ===========================
+   TABLE
+=========================== */
+
+.cm-table{
+
+    background:#fff;
+
+    border-radius:18px;
+
+    overflow:hidden;
+
+    box-shadow:
+    0 10px 30px rgba(0,0,0,.07);
+
+}
+
+.cm-table-head{
+
+    display:grid;
+
+    grid-template-columns:
+    2.3fr
+    1.3fr
+    1.2fr
+    1fr
+    1.4fr;
+
+    padding:18px 24px;
+
+    background:#2563eb;
+
+    color:#fff;
+
+    font-weight:600;
+
+}
+
+.cm-table-row{
+
+    display:grid;
+
+    grid-template-columns:
+    2.3fr
+    1.3fr
+    1.2fr
+    1fr
+    1.4fr;
+
+    align-items:center;
+
+    padding:20px 24px;
+
+    border-bottom:1px solid #edf2f7;
+
+    transition:.25s;
+
+}
+
+.cm-table-row:hover{
+
+    background:#f8fbff;
+
+}
+
+/* ===========================
+   CUSTOMER INFO
+=========================== */
+
+.cm-customer-info{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+}
+
+.cm-customer-photo{
+
+    width:55px;
+
+    height:55px;
+
+    border-radius:50%;
+
+    object-fit:cover;
+
+    border:3px solid #dbeafe;
+
+}
+
+.cm-customer-info h4{
+
+    color:#1e293b;
+
+    margin-bottom:5px;
+
+    font-size:17px;
+
+}
+
+.cm-customer-info p{
+
+    color:#64748b;
+
+    font-size:14px;
+
+}
+
+.cm-table-row span{
+
+    color:#334155;
+
+    font-size:15px;
+
+}
+
+/* ===========================
+   ACTION BUTTONS
+=========================== */
+
+.cm-actions{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+}
+
+.cm-actions button{
+
+    width:42px;
+
+    height:42px;
+
+    border:none;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:16px;
+
+}
+
+.cm-view-btn{
+
+    background:#eff6ff;
+
+    color:#2563eb;
+
+}
+
+.cm-view-btn:hover{
+
+    background:#2563eb;
+
+    color:#fff;
+
+}
+
+.cm-block-btn{
+
+    background:#fee2e2;
+
+    color:#dc2626;
+
+}
+
+.cm-block-btn:hover{
+
+    background:#dc2626;
+
+    color:#fff;
+
+}
+
+.cm-unblock-btn{
+
+    background:#dcfce7;
+
+    color:#15803d;
+
+}
+
+.cm-unblock-btn:hover{
+
+    background:#15803d;
+
+    color:#fff;
+
+}
+/* ===========================
+   POPUP
+=========================== */
+
+.cm-popup-overlay{
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(15,23,42,.55);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:20px;
+
+    overflow-y:auto;
+
+    z-index:9999;
+
+}
+
+.cm-popup-box{
+
+    width:600px;
+
+    max-width:95%;
+
+    max-height:90vh;
+
+    overflow-y:auto;
+
+    background:#fff;
+
+    border-radius:22px;
+
+    padding:30px;
+
+    box-shadow:
+    0 30px 60px rgba(0,0,0,.18);
+
+}
+
+/* ===========================
+   POPUP SCROLLBAR
+=========================== */
+
+.cm-popup-box::-webkit-scrollbar{
+
+    width:8px;
+
+}
+
+.cm-popup-box::-webkit-scrollbar-thumb{
+
+    background:#2563eb;
+
+    border-radius:20px;
+
+}
+
+.cm-popup-box::-webkit-scrollbar-track{
+
+    background:#edf2f7;
+
+}
+
+/* ===========================
+   TOP
+=========================== */
+
+.cm-popup-top{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:20px;
+
+    margin-bottom:25px;
+
+}
+
+.cm-popup-photo{
+
+    width:90px;
+
+    height:90px;
+
+    border-radius:50%;
+
+    object-fit:cover;
+
+    border:4px solid #dbeafe;
+
+}
+
+.cm-popup-top h2{
+
+    color:#1e293b;
+
+    margin-bottom:6px;
+
+}
+
+.cm-popup-top p{
+
+    color:#64748b;
+
+}
+
+/* ===========================
+   DETAILS
+=========================== */
+
+.cm-popup-details{
+
+    margin-top:20px;
+
+}
+
+.cm-popup-details p{
+
+    padding:12px 0;
+
+    border-bottom:1px solid #e2e8f0;
+
+    color:#334155;
+
+}
+
+.cm-popup-details strong{
+
+    color:#0f172a;
+
+}
+
+/* ===========================
+   CLOSE BUTTON
+=========================== */
+
+.cm-close-btn{
+
+    width:100%;
+
+    margin-top:25px;
+
+    padding:14px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:#2563eb;
+
+    color:#fff;
+
+    font-size:16px;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+}
+
+.cm-close-btn:hover{
+
+    background:#1d4ed8;
+
+}
+
+/* ===========================
+   RESPONSIVE
+=========================== */
+
+@media(max-width:900px){
+
+    .cm-management{
+
+        padding:20px;
+
+    }
+
+    .cm-table{
+
+        overflow-x:auto;
+
+    }
+
+    .cm-table-head,
+    .cm-table-row{
+
+        min-width:760px;
+
+    }
+
+}
+
+@media(max-width:650px){
+
+    .cm-popup-box{
+
+        width:95%;
+
+        padding:20px;
+
+    }
+
+    .cm-popup-top{
+
+        flex-direction:column;
+
+        text-align:center;
+
+    }
+
+    .cm-popup-photo{
+
+        width:80px;
+
+        height:80px;
+
+    }
+
+}

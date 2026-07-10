@@ -38,7 +38,7 @@ function AdminDashboard() {
       icon: <FaClipboardList />
     }
   ];
-  const navigate=useNavigate();
+  const navigate = useNavigate();
 
   return (
     <div className="admin-dashboard">
@@ -59,30 +59,29 @@ function AdminDashboard() {
             Dashboard
           </button>
 
-          <button 
-          className="menu-btn"
-          onClick={() => navigate('/service-management')}
+          <button
+            className="menu-btn"
+            onClick={() => navigate('/service-management')}
           >
             <FaTools />
             Service Management
           </button>
 
-          <button className="menu-btn">
-            <FaUserCheck />
-            Provider Approval
-          </button>
-
-          <button className="menu-btn">
+          <button className="menu-btn" onClick={() => navigate("/provider-management")}>
             <FaUsers />
-            Providers
+            Provider Management
           </button>
 
-          <button className="menu-btn">
+          <button className="menu-btn" onClick={() => navigate("/booking-management")}>
             <FaCalendarCheck />
             Bookings
           </button>
+          <button className="menu-btn" onClick={() => navigate("/customer-management")}>
+            <FaUsers />
+            Customer Management
+          </button>
 
-          <button className="menu-btn">
+          <button className="menu-btn" onClick={()=> navigate("/admin-setting")}>
             <FaCog />
             Settings
           </button>
